@@ -48,6 +48,7 @@ RUN curl -sSLO https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz \
  && ./config --prefix=/opt/openssl \
         shared \
         enable-ec_nistp_64_gcc_128 \
+        '-Wl,-rpath,$(LIBRPATH)' \
  && make depend \
  && make -j ${nproc} \
  && make install_sw \
